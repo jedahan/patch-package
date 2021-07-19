@@ -93,6 +93,11 @@ export function applyPatchesForApp({
   const patchesDirectory = join(appPath, patchDir)
   const files = findPatchFiles(patchesDirectory)
 
+  if (files === undefined) {
+    console.error(chalk.blueBright(`No ${patchesDirectory} directory found`))
+    return
+  }
+
   if (files.length === 0) {
     console.error(chalk.blueBright("No patch files found"))
     return
